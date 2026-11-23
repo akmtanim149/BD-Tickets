@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BD Ticket Copy</title>
+
+
+
+
+    <!-- Links -->
+    <link rel="stylesheet" href="bootstrap-5.0.2-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap-5.0.2-dist/js/bootstrap.min.js">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <style>
+        body {
+            padding-top: 56px;
+        }
+
+        .navbar {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            z-index: 9999 !important;
+        }
+    </style>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg shadow-sm sticky-top" style="position: relative;">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="Gallery/collected/bd-tickets-logo.svg" alt="">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Home + Flash Deal -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- Home + Flash Deal -->
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                    <!-- Home Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle d-flex align-items-center gap-1 text-light fw-semibold"
+                            href="index.html" role="button" data-bs-toggle="dropdown">
+                            <i class="bi bi-house text-light"></i>Home
+                        </a>
+                        <ul class="dropdown-menu shadow border-0 rounded-3 p-2">
+                            <li>
+                                <a class="dropdown-item rounded-2 py-2" href="index.html">
+                                    <i class="bi bi-house me-2"></i> Home
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item rounded-2 py-2" href="bus.html">
+                                    <i class="bi bi-bus-front me-2"></i> Bus
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item rounded-2 py-2" href="launch.html">
+                                    <i class="bi bi-water me-2"></i> Launch
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="flight.html">
+                                    <i class="bi bi-airplane me-2"></i> Airplane
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- Flash Deal -->
+                    <li class="nav-item">
+                        <a class="nav-link d-flex align-items-center gap-1 text-light fw-semibold"
+                            href="flashdeals.html">
+                            <i class="bi bi-lightning-charge text-light"></i> Flash Deals
+                        </a>
+                    </li>
+                    <!-- Flash Deal -->
+                </ul>
+
+                <!-- Right Side: Call to Book + Login -->
+                <div class="d-flex align-items-center gap-3">
+
+                    <!-- Call to Book -->
+                    <span class="d-flex align-items-center gap-2 text-light" style="font-size: 14px; cursor: pointer;"
+                        data-bs-toggle="modal" data-bs-target="#callModal">
+                        <i class="bi bi-telephone"></i>
+                        <span>Call to book <strong>16460 / 09610016460</strong></span>
+                    </span>
+                    <!-- Call to Book -->
+
+                    <!-- Login Button -->
+                    <button type="button" class="btn btn-outline-danger px-4 fw-semibold" data-bs-toggle="modal"
+                        data-bs-target="#loginModal">
+                        Login
+                    </button>
+                    <!-- Login Button -->
+
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+
+    <!-- Call to Book Modal -->
+    <div class="modal fade" id="callModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content rounded-4 p-3">
+
+                <div class="modal-header border-0">
+                    <h5 class="modal-title fw-semibold">Open Pick an app?</h5>
+                </div>
+
+                <div class="modal-body">
+                    <p class="text-muted" style="font-size: 14px;">
+                        https://bdtickets.com wants to open this application.
+                    </p>
+                    <div class="d-flex align-items-center gap-2">
+                        <input type="checkbox" id="alwaysAllow" style="width: 16px; height: 16px;">
+                        <label for="alwaysAllow" class="text-muted" style="font-size: 13px;">
+                            Always allow bdtickets.com to open links of this type in the associated app
+                        </label>
+                    </div>
+                </div>
+
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-outline-secondary rounded-pill px-4" data-bs-dismiss="modal">
+                        Open Pick an app
+                    </button>
+                    <button type="button" class="btn btn-primary rounded-pill px-4" data-bs-dismiss="modal">
+                        Cancel
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content rounded-4 p-3">
+
+                <!-- Close Button -->
+                <div class="d-flex justify-content-end">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <!-- Tab Buttons -->
+                <div class="d-flex gap-2 bg-light rounded-3 p-2 mx-3 mb-3">
+                    <button id="phoneTab" onclick="switchTab('phone')"
+                        class="btn btn-white border w-50 d-flex align-items-center justify-content-center gap-2">
+                        📱 Phone
+                    </button>
+                    <button id="emailTab" onclick="switchTab('email')"
+                        class="btn w-50 d-flex align-items-center justify-content-center gap-2 text-muted">
+                        ✉️ Email
+                    </button>
+                </div>
+
+                <!-- Phone Section -->
+                <div id="phoneSection" class="px-3 pb-3">
+                    <p class="text-muted mb-1" style="font-size: 14px;">Phone number</p>
+                    <div class="d-flex align-items-center border rounded-3 px-3 py-2 mb-3 gap-2">
+                        <span>🇧🇩</span>
+                        <span class="text-muted" style="font-size: 13px;">+880</span>
+                        <span class="text-muted">|</span>
+                        <input type="tel" placeholder="1xxxxxxxxx" class="border-0 w-100"
+                            style="outline: none; font-size: 14px;">
+                    </div>
+                    <div class="d-flex align-items-center gap-2 mb-3">
+                        <input type="checkbox" id="keepPhone" style="width: 18px; height: 18px;">
+                        <label for="keepPhone" class="text-muted" style="font-size: 13px;">Keep me logged in</label>
+                    </div>
+                    <button class="btn btn-secondary w-100 py-2">Send OTP</button>
+                </div>
+
+                <!-- Email Section -->
+                <div id="emailSection" class="px-3 pb-3" style="display: none;">
+                    <p class="text-muted mb-1" style="font-size: 14px;">Email address</p>
+                    <div class="d-flex align-items-center border rounded-3 px-3 py-2 mb-3">
+                        <input type="email" placeholder="example@email.com" class="border-0 w-100"
+                            style="outline: none; font-size: 14px;">
+                    </div>
+                    <div class="d-flex align-items-center gap-2 mb-3">
+                        <input type="checkbox" id="keepEmail" style="width: 18px; height: 18px;">
+                        <label for="keepEmail" class="text-muted" style="font-size: 13px;">Keep me logged in</label>
+                    </div>
+                    <button class="btn btn-secondary w-100 py-2">Send OTP</button>
+                </div>
+
+                <!-- Footer Text -->
+                <p class="text-center text-muted px-3 pb-2" style="font-size: 11px;">
+                    By tapping send OTP, you agree to
+                    <a href="#" class="text-decoration-underline text-muted">Terms and Conditions</a>
+                    and
+                    <a href="#" class="text-decoration-underline text-muted">Privacy Policy</a>
+                    of bdtickets
+                </p>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Background Image -->
+    <div style="position: absolute; top: 0; left: 0; width: 100%;">
+        <div style="position: relative;">
+            <img src="Gallery/collected/BUS BG.jpg" alt="" style="width: 100%; height: 80vh; object-fit: cover;">
+
+            <!-- Dark overlay -->
+            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5);">
+            </div>
+
+            <!-- Image Content -->
+            <div style="position: absolute; top: 55%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
+
+                <!-- Title -->
+                <h1 class=" text-white fw-bold">More routes, More Ticket</h1>
+                <p class="text-white">Enjoy your Trips with bdtickets</p>
+
+                <!-- See Offer Button -->
+                <a href="flashdeals.html" class="btn btn-outline-light rounded-pill px-4">See Offer &rsaquo;</a>
+
+                <!-- Search Box -->
+                <div class="bg-white p-4 mt-5" style="width: 90vw; max-width: 1000px; border-radius: 25px;">
+
+                    <!-- Bus | Launch | Flight Tab -->
+                    <div class="d-flex justify-content-center gap-4 mb-3 border-bottom pb-2">
+                        <a href="#"
+                            class="text-danger fw-semibold text-decoration-none border-bottom border-danger pb-1">
+                            <i class="bi bi-bus-front"></i> Bus
+                        </a>
+                        <a href="#" class="text-muted text-decoration-none">
+                            <i class="bi bi-water"></i> Launch
+                        </a>
+                        <a href="#" class="text-muted text-decoration-none">
+                            <i class="bi bi-airplane"></i> Flight
+                        </a>
+                    </div>
+
+                    <!-- Input Fields -->
+                    <div class="row g-2 align-items-center">
+
+                        <!-- Depart From -->
+                        <div class="col" style="position: relative;">
+                            <div class="border rounded-3 p-2" style="background: #f8f9fa; min-height: 60px;">
+                                <small class="text-muted d-block" style="font-size: 11px;">Depart From</small>
+                                <input type="text" class="border-0 w-100 fw-semibold bg-transparent"
+                                    placeholder="Select" style="outline: none; font-size: 14px;"
+                                    onfocus="document.getElementById('departList').style.display='block'"
+                                    onblur="setTimeout(()=>document.getElementById('departList').style.display='none',200)">
+                            </div>
+                            <div id="departList" class="shadow rounded-3 bg-white p-2"
+                                style="display:none; position: absolute; top: 65px; left: 0; width: 220px; z-index: 999;">
+                                <p class="fw-semibold px-2 mb-1" style="font-size: 13px;">Popular Places</p>
+                                <div class="dropdown-item py-2"><i class="bi bi-bus-front me-2"></i>Cox's Bazar</div>
+                                <div class="dropdown-item py-2"><i class="bi bi-bus-front me-2"></i>Sylhet</div>
+                                <div class="dropdown-item py-2"><i class="bi bi-bus-front me-2"></i>Barisal</div>
+                                <div class="dropdown-item py-2"><i class="bi bi-bus-front me-2"></i>Dhaka</div>
+                                <div class="dropdown-item py-2"><i class="bi bi-bus-front me-2"></i>Chittagong</div>
+                            </div>
+                        </div>
+
+                        <!-- Arrow -->
+                        <div class="col-auto">
+                            <i class="bi bi-arrow-left-right text-muted"></i>
+                        </div>
+
+                        <!-- Going To -->
+                        <div class="col" style="position: relative;">
+                            <div class="border rounded-3 p-2" style="background: #f8f9fa; min-height: 60px;">
+                                <small class="text-muted d-block" style="font-size: 11px;">Going To</small>
+                                <input type="text" class="border-0 w-100 fw-semibold bg-transparent"
+                                    placeholder="Select" style="outline: none; font-size: 14px;"
+                                    onfocus="document.getElementById('goingList').style.display='block'"
+                                    onblur="setTimeout(()=>document.getElementById('goingList').style.display='none',200)">
+                            </div>
+                            <div id="goingList" class="shadow rounded-3 bg-white p-2"
+                                style="display:none; position: absolute; top: 65px; left: 0; width: 220px; z-index: 999;">
+                                <p class="fw-semibold px-2 mb-1" style="font-size: 13px;">Popular Places</p>
+                                <div class="dropdown-item py-2"><i class="bi bi-bus-front me-2"></i>Cox's Bazar</div>
+                                <div class="dropdown-item py-2"><i class="bi bi-bus-front me-2"></i>Sylhet</div>
+                                <div class="dropdown-item py-2"><i class="bi bi-bus-front me-2"></i>Barisal</div>
+                                <div class="dropdown-item py-2"><i class="bi bi-bus-front me-2"></i>Dhaka</div>
+                                <div class="dropdown-item py-2"><i class="bi bi-bus-front me-2"></i>Chittagong</div>
+                            </div>
+                        </div>
+
+                        <!-- Journey Date -->
+                        <div class="col">
+                            <div class="border rounded-3 p-2" style="background: #f8f9fa; min-height: 60px;">
+                                <small class="text-muted d-block" style="font-size: 11px;">Journey date</small>
+                                <input type="date" class="border-0 w-100 fw-semibold bg-transparent"
+                                    style="outline: none; font-size: 14px;">
+                            </div>
+                        </div>
+
+                        <!-- Return Date -->
+                        <div class="col">
+                            <div class="border rounded-3 p-2" style="background: #f8f9fa; min-height: 60px;">
+                                <small class="text-muted d-block" style="font-size: 11px;">Return date</small>
+                                <p class="mb-0 text-primary fw-semibold" style="font-size: 14px;">Book to Save Extra</p>
+                            </div>
+                        </div>
+
+                        <!-- Passengers -->
+                        <div class="col-auto">
+                            <div class="border rounded-3 p-2" style="background: #f8f9fa; min-height: 60px;">
+                                <small class="text-muted d-block" style="font-size: 11px;">Passenger(s)</small>
+                                <select class="border-0 fw-semibold bg-transparent"
+                                    style="outline: none; font-size: 14px;">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Search Button -->
+                        <div class="col-auto">
+                            <a href="bus_route_page.html">
+                                <button class="btn btn-danger rounded-3" style="height: 60px; width: 60px;">
+                                    <i class="bi bi-search text-white fs-5"></i>
+                                </button>
+                            </a>
+                        </div>
+
+                    </div>
+
+                    <!-- Trending Searches -->
+                    <div class="d-flex align-items-center gap-2 mt-3"
+                        style="overflow-x: auto; flex-wrap: nowrap; white-space: nowrap;">
+                        <small class="text-muted flex-shrink-0">Trending Searches:</small>
+                        <span class="badge border text-dark fw-normal px-3 py-2 rounded-pill flex-shrink-0">Dhaka →
+                            Cox's Bazar</span>
+                        <span class="badge border text-dark fw-normal px-3 py-2 rounded-pill flex-shrink-0">Dhaka →
+                            Rajshahi</span>
+                        <span class="badge border text-dark fw-normal px-3 py-2 rounded-pill flex-shrink-0">Chittagong →
+                            Cox's Bazar</span>
+                        <span class="badge border text-dark fw-normal px-3 py-2 rounded-pill flex-shrink-0">Dhaka →
+                            Chittagong</span>
+                        <span class="badge border text-dark fw-normal px-3 py-2 rounded-pill flex-shrink-0">Dhaka →
+                            Bandarban</span>
+                        <span class="badge border text-dark fw-normal px-3 py-2 rounded-pill flex-shrink-0">Dhaka →
+                            Sylhet</span>
+                    </div>
+
+                </div>
+
+                <!-- Search Box -->
+            </div>
+
+        </div>
+
+    </div>
+    <!-- Background Image -->
+
+
+
+    <!-- Advertiesment Section -->
+    <div class="container" style="margin-top: 85vh;">
+        <img src="Gallery/collected/offer bg.png" alt="">
+    </div>
+    <!-- Advertiesment Section -->
+
+
+    <!-- Deal Cards Section -->
+    <div class="container my-4 mb-5">
+        <h5 class="fw-semibold mb-3">বৈশাখী ঝড়ো অফার</h5>
+
+        <!-- Horizontal Scroll -->
+        <div class="d-flex gap-3 overflow-auto pb-2">
+
+            <!-- Single Card -->
+            <div class="card border rounded-3 flex-shrink-0" style="width: 300px; min-width: 300px;">
+                <img src="Gallery/collected/BD-Ticket/akilpkZ2mcxnt2hXOQrgUfrixeCwCvdwwb.webp"
+                    class="card-img-top rounded-top-3" style="height: 180px; object-fit: cover;">
+                <div class="card-body">
+                    <h6 class="card-title fw-semibold">Iconic Express Deal|Cox's Bazar ⇌</h6>
+                    <p class="text-muted mb-1" style="font-size: 13px;">Cox's Bazar ⇌ Dinajpur</p>
+                    <div class="d-flex gap-2 align-items-center">
+                        <span class="text-muted text-decoration-line-through" style="font-size: 13px;">৳2000</span>
+                        <span class="text-danger fw-bold">৳1200</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Single Card -->
+
+            <!-- Single Card -->
+            <div class="card border rounded-3 flex-shrink-0" style="width: 300px; min-width: 300px;">
+                <img src="Gallery/collected/BD-Ticket/hO3ako4V9btg9Qnl6uC8cAHFAsuV7Up0Ok.webp"
+                    class="card-img-top rounded-top-3" style="height: 180px; object-fit: cover;">
+                <div class="card-body">
+                    <h6 class="card-title fw-semibold">Saintmartin Paribahan Dhaka ⇌ Ch...</h6>
+                    <p class="text-muted mb-1" style="font-size: 13px;">Dhaka ⇌ Chittagong ⇌ Cox's Bazar</p>
+                    <div class="d-flex gap-2 align-items-center">
+                        <span class="text-muted text-decoration-line-through" style="font-size: 13px;">৳2000</span>
+                        <span class="text-danger fw-bold">৳1200</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Single Card -->
+
+            <!-- Single Card -->
+            <div class="card border rounded-3 flex-shrink-0" style="width: 300px; min-width: 300px;">
+                <img src="Gallery/collected/BD-Ticket/hOmLgmRIY8X3phdbulqnXboqi4wLSrnxQ6.webp"
+                    class="card-img-top rounded-top-3" style="height: 180px; object-fit: cover;">
+                <div class="card-body">
+                    <h6 class="card-title fw-semibold">Saintmartin Paribahan Dhaka ⇌ Ch...</h6>
+                    <p class="text-muted mb-1" style="font-size: 13px;">Dhaka ⇌ Chittagong ⇌ Cox's Bazar</p>
+                    <div class="d-flex gap-2 align-items-center">
+                        <span class="text-muted text-decoration-line-through" style="font-size: 13px;">৳2000</span>
+                        <span class="text-danger fw-bold">৳1200</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Single Card -->
+
+            <!-- Single Card -->
+            <div class="card border rounded-3 flex-shrink-0" style="width: 300px; min-width: 300px;">
+                <img src="Gallery/collected/BD-Ticket/jrsqHg5O46vGKK9oBUYazyugaPJ0a5HUUA.webp"
+                    class="card-img-top rounded-top-3" style="height: 180px; object-fit: cover;">
+                <div class="card-body">
+                    <h6 class="card-title fw-semibold">Saintmartin Paribahan Dhaka ⇌ Ch...</h6>
+                    <p class="text-muted mb-1" style="font-size: 13px;">Dhaka ⇌ Chittagong ⇌ Cox's Bazar</p>
+                    <div class="d-flex gap-2 align-items-center">
+                        <span class="text-muted text-decoration-line-through" style="font-size: 13px;">৳2000</span>
+                        <span class="text-danger fw-bold">৳1200</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Single Card -->
+
+            <!-- Single Card -->
+            <div class="card border rounded-3 flex-shrink-0" style="width: 300px; min-width: 300px;">
+                <img src="Gallery/collected/BD-Ticket/mqWlRgGOoBAsLS15atU0b7OEdXNrtxH2T4.webp"
+                    class="card-img-top rounded-top-3" style="height: 180px; object-fit: cover;">
+                <div class="card-body">
+                    <h6 class="card-title fw-semibold">Saintmartin Paribahan Dhaka ⇌ Ch...</h6>
+                    <p class="text-muted mb-1" style="font-size: 13px;">Dhaka ⇌ Chittagong ⇌ Cox's Bazar</p>
+                    <div class="d-flex gap-2 align-items-center">
+                        <span class="text-muted text-decoration-line-through" style="font-size: 13px;">৳2000</span>
+                        <span class="text-danger fw-bold">৳1200</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Single Card -->
+
+        </div>
+    </div>
+
+    <!-- Another One -->
+    <!-- Deal Cards Section -->
+    <div class="container my-4 mb-5">
+        <h5 class="fw-semibold mb-3">Summer Escape: Cox's Bazar Deals</h5>
+
+        <!-- Horizontal Scroll -->
+        <div class="d-flex gap-3 overflow-auto pb-2">
+
+            <!-- Single Card -->
+            <div class="card border rounded-3 flex-shrink-0" style="width: 300px; min-width: 300px;">
+                <img src="Gallery/collected/BD-Ticket/akilpkZ2mcxnt2hXOQrgUfrixeCwCvdwwb.webp"
+                    class="card-img-top rounded-top-3" style="height: 180px; object-fit: cover;">
+                <div class="card-body">
+                    <h6 class="card-title fw-semibold">Iconic Express Deal|Cox's Bazar ⇌.</h6>
+                    <p class="text-muted mb-1" style="font-size: 13px;">Dhaka ⇌ Chittagong ⇌ Cox's Bazar</p>
+                    <div class="d-flex gap-2 align-items-center">
+                        <span class="text-muted text-decoration-line-through" style="font-size: 13px;">৳2000</span>
+                        <span class="text-danger fw-bold">৳1200</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Single Card -->
+
+            <!-- Single Card -->
+            <div class="card border rounded-3 flex-shrink-0" style="width: 300px; min-width: 300px;">
+                <img src="Gallery/collected/BD-Ticket/hO3ako4V9btg9Qnl6uC8cAHFAsuV7Up0Ok.webp"
+                    class="card-img-top rounded-top-3" style="height: 180px; object-fit: cover;">
+                <div class="card-body">
+                    <h6 class="card-title fw-semibold">Saintmartin Paribahan Dhaka ⇌ Ch...</h6>
+                    <p class="text-muted mb-1" style="font-size: 13px;">Dhaka ⇌ Chittagong ⇌ Cox's Bazar</p>
+                    <div class="d-flex gap-2 align-items-center">
+                        <span class="text-muted text-decoration-line-through" style="font-size: 13px;">৳2000</span>
+                        <span class="text-danger fw-bold">৳1200</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Single Card -->
+
+            <!-- Single Card -->
+            <div class="card border rounded-3 flex-shrink-0" style="width: 300px; min-width: 300px;">
+                <img src="Gallery/collected/BD-Ticket/hOmLgmRIY8X3phdbulqnXboqi4wLSrnxQ6.webp"
+                    class="card-img-top rounded-top-3" style="height: 180px; object-fit: cover;">
+                <div class="card-body">
+                    <h6 class="card-title fw-semibold">Saintmartin Paribahan Dhaka ⇌ Ch...</h6>
+                    <p class="text-muted mb-1" style="font-size: 13px;">Dhaka ⇌ Chittagong ⇌ Cox's Bazar</p>
+                    <div class="d-flex gap-2 align-items-center">
+                        <span class="text-muted text-decoration-line-through" style="font-size: 13px;">৳2000</span>
+                        <span class="text-danger fw-bold">৳1200</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Single Card -->
+
+            <!-- Single Card -->
+            <div class="card border rounded-3 flex-shrink-0" style="width: 300px; min-width: 300px;">
+                <img src="Gallery/collected/BD-Ticket/jrsqHg5O46vGKK9oBUYazyugaPJ0a5HUUA.webp"
+                    class="card-img-top rounded-top-3" style="height: 180px; object-fit: cover;">
+                <div class="card-body">
+                    <h6 class="card-title fw-semibold">Saintmartin Paribahan Dhaka ⇌ Ch...</h6>
+                    <p class="text-muted mb-1" style="font-size: 13px;">Dhaka ⇌ Chittagong ⇌ Cox's Bazar</p>
+                    <div class="d-flex gap-2 align-items-center">
+                        <span class="text-muted text-decoration-line-through" style="font-size: 13px;">৳2000</span>
+                        <span class="text-danger fw-bold">৳1200</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Single Card -->
+
+            <!-- Single Card -->
+            <div class="card border rounded-3 flex-shrink-0" style="width: 300px; min-width: 300px;">
+                <img src="Gallery/collected/BD-Ticket/mqWlRgGOoBAsLS15atU0b7OEdXNrtxH2T4.webp"
+                    class="card-img-top rounded-top-3" style="height: 180px; object-fit: cover;">
+                <div class="card-body">
+                    <h6 class="card-title fw-semibold">Saintmartin Paribahan Dhaka ⇌ Ch...</h6>
+                    <p class="text-muted mb-1" style="font-size: 13px;">Dhaka ⇌ Chittagong ⇌ Cox's Bazar</p>
+                    <div class="d-flex gap-2 align-items-center">
+                        <span class="text-muted text-decoration-line-through" style="font-size: 13px;">৳2000</span>
+                        <span class="text-danger fw-bold">৳1200</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Single Card -->
+
+        </div>
+    </div>
+    <!-- Another One -->
+
+
+
+    <!-- Why BD Tickets -->
+    <!-- Why bdtickets Section -->
+    <div class="container my-5">
+        <h5 class="fw-semibold mb-4">Why bdtickets Stands Out 🚀</h5>
+
+        <div class="row g-3">
+
+            <!-- Single Item -->
+            <div class="col-6 col-md-2">
+                <div class="card border-0 rounded-4 text-center g-3 p-3" style="width: 120%; height: 250px;">
+                    <img src="Gallery/collected/BD-Ticket/body/EdnTMtwk4Kg4Eq5NksptF1imGu1LIovZM5.webp" alt=""
+                        class="mx-auto mb-3" style="width: 100%; height: 100%;">
+                </div>
+                <h5 class="mb-0 fw-semibold" style="font-size: 16px;">24/7 Support</h5>
+            </div>
+            <!-- Single Item -->
+
+            <!-- Single Item -->
+            <div class="col-6 col-md-2">
+                <div class="card border-0 rounded-4 text-center g-3 p-3" style="width: 120%; height: 250px;">
+                    <img src="Gallery/collected/BD-Ticket/body/EdnTMtwk4Kg4Eq5NksptF1imGu1LIovZM5.webp" alt=""
+                        class="mx-auto mb-3" style="width: 100%; height: 100%;">
+                </div>
+                <h5 class="mb-0 fw-semibold" style="font-size: 16px;">24/7 Support</h5>
+            </div>
+            <!-- Single Item -->
+
+            <!-- Single Item -->
+            <div class="col-6 col-md-2">
+                <div class="card border-0 rounded-4 text-center g-3 p-3" style="width: 120%; height: 250px;">
+                    <img src="Gallery/collected/BD-Ticket/body/IxBhtEoMKOMhd8u8b7VBLZSrGe7Ojv5NUO.webp" alt=""
+                        class="mx-auto mb-3" style="width: 100%; height: 100%;">
+                </div>
+                <h5 class="mb-0 fw-semibold" style="font-size: 16px;">24/7 Support</h5>
+            </div>
+            <!-- Single Item -->
+
+            <!-- Single Item -->
+            <div class="col-6 col-md-2">
+                <div class="card border-0 rounded-4 text-center g-3 p-3" style="width: 120%; height: 250px;">
+                    <img src="Gallery/collected/BD-Ticket/body/EdnTMtwk4Kg4Eq5NksptF1imGu1LIovZM5.webp" alt=""
+                        class="mx-auto mb-3" style="width: 100%; height: 100%;">
+                </div>
+                <h5 class="mb-0 fw-semibold" style="font-size: 16px;">24/7 Support</h5>
+            </div>
+            <!-- Single Item -->
+
+            <!-- Single Item -->
+            <div class="col-6 col-md-2">
+                <div class="card border-0 rounded-4 text-center g-3 p-3" style="width: 120%; height: 250px;">
+                    <img src="Gallery/collected/BD-Ticket/body/IxBhtEoMKOMhd8u8b7VBLZSrGe7Ojv5NUO.webp" alt=""
+                        class="mx-auto mb-3" style="width: 100%; height: 100%;">
+                </div>
+                <h5 class="mb-0 fw-semibold" style="font-size: 16px;">24/7 Support</h5>
+            </div>
+            <!-- Single Item -->
+
+        </div>
+    </div>
+    <!-- Why BD Tickets -->
+
+    <!-- Unbeatable Price Section -->
+    <div class="container my-5">
+        <h5 class="fw-semibold mb-3">Unbeatable Price</h5>
+
+        <div class="row g-3">
+
+            <!-- Card 1 -->
+            <div class="col-6 col-lg-3" style="position: relative;">
+                <img src="Gallery/collected/BD-Ticket/body/147.webp" alt="" class="w-100 rounded-3"
+                    style="height: 220px; object-fit: cover;">
+                <div style="position: absolute; bottom: 15px; left: 25px;">
+                    <h4 class="text-white fw-bold mb-0"></h4>
+                    <small class="text-white"></small>
+                    <h6 class="text-white fw-bold"></h6>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="col-6 col-lg-3" style="position: relative;">
+                <img src="Gallery/collected/BD-Ticket/body/741.webp" alt="" class="w-100 rounded-3"
+                    style="height: 220px; object-fit: cover;">
+                <div style="position: absolute; bottom: 15px; left: 25px;">
+                    <h4 class="text-white fw-bold mb-0"></h4>
+                    <small class="text-white"></small>
+                    <h6 class="text-white fw-bold"></h6>
+                </div>
+            </div>
+
+            <!-- Card 3 --->
+            <div class="col-12 col-lg-6">
+                <img src="Gallery/collected/BD-Ticket/body/123.webp" alt="" class="w-100 rounded-3"
+                    style="height: 220px; object-fit: cover;">
+            </div>
+            <!-- Card 1 -->
+
+            <!-- Card 1 -->
+            <div class="col-6 col-lg-3" style="position: relative;">
+                <img src="Gallery/collected/BD-Ticket/body/147.webp" alt="" class="w-100 rounded-3"
+                    style="height: 220px; object-fit: cover;">
+                <div style="position: absolute; bottom: 15px; left: 25px;">
+                    <h4 class="text-white fw-bold mb-0"></h4>
+                    <small class="text-white"></small>
+                    <h6 class="text-white fw-bold"></h6>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="col-6 col-lg-3" style="position: relative;">
+                <img src="Gallery/collected/BD-Ticket/body/741.webp" alt="" class="w-100 rounded-3"
+                    style="height: 220px; object-fit: cover;">
+                <div style="position: absolute; bottom: 15px; left: 25px;">
+                    <h4 class="text-white fw-bold mb-0"></h4>
+                    <small class="text-white"></small>
+                    <h6 class="text-white fw-bold"></h6>
+                </div>
+            </div>
+
+            <!-- Card 3 --->
+            <div class="col-12 col-lg-6">
+                <img src="Gallery/collected/BD-Ticket/body/321.webp" alt="" class="w-100 rounded-3"
+                    style="height: 220px; object-fit: cover;">
+            </div>
+            <!-- Card 1 -->
+
+        </div>
+    </div>
+
+    <!-- Unread Price -->
+
+
+
+    <!-- Download App Section -->
+    <div class="container my-5">
+        <div class="row align-items-center rounded-4 overflow-hidden"
+            style="background: linear-gradient(135deg, #c0392b, #e74c3c);">
+
+            <!-- Left Side: Text + Buttons -->
+            <div class="col-md-5 p-5">
+                <h2 class="text-white fw-bold">Download Our App.</h2>
+                <p class="text-white mb-4">Book tickets anytime, anywhere.</p>
+
+                <div class="d-flex align-items-center gap-3">
+
+                    <!-- QR Code -->
+                    <img src="Gallery/collected/app_qr.svg" alt="QR Code" class="rounded-3 bg-white p-1"
+                        style="width: 100px; height: 100px;">
+
+                    <!-- Google Play + App Store -->
+                    <div class="d-flex flex-column gap-2">
+                        <a href="#" class="btn btn-dark rounded-3 d-flex align-items-center gap-2 px-3">
+                            <i class="bi bi-google-play fs-4"></i>
+                            <div class="text-start">
+                                <small style="font-size: 10px;">GET IT ON</small>
+                                <p class="mb-0 fw-semibold" style="font-size: 14px;">Google Play</p>
+                            </div>
+                        </a>
+                        <a href="#" class="btn btn-dark rounded-3 d-flex align-items-center gap-2 px-3">
+                            <i class="bi bi-apple fs-4"></i>
+                            <div class="text-start">
+                                <small style="font-size: 10px;">Download on the</small>
+                                <p class="mb-0 fw-semibold" style="font-size: 14px;">App Store</p>
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+            <!-- Download App Section -->
+
+            <!-- Right Side: Phone Images -->
+            <div class="col-md-7 d-flex justify-content-center align-items-end gap-3 pt-4">
+                <img src="Gallery/collected/app_image.svg" alt="" style="height: 380px; object-fit: contain;">
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- Footer Part -->
+    <!-- Footer Section -->
+    <div class="container-fluid bg-dark text-white pt-5 pb-3">
+        <div class="container">
+
+            <div class="row">
+
+                <!-- Left Side -->
+                <div class="col-md-4 mb-4">
+                    <img src="Gallery/collected/bd-tickets-logo.svg" alt="" style="width: 120px;">
+                    <p class="mt-3 text-muted" style="font-size: 14px;">
+                        Book bus tickets online in Bangladesh with bdtickets. Compare top bus operators,
+                        check schedules, choose seats, and enjoy secure, reliable travel across all major routes.
+                    </p>
+                </div>
+
+                <!-- Middle Links -->
+                <div class="col-md-2 mb-4">
+                    <h6 class="fw-semibold">bdtickets</h6>
+                    <ul class="list-unstyled mt-3">
+                        <li class="mb-2 text-muted">Help Center</li>
+                        <li class="mb-2 text-muted">About Us</li>
+                        <li class="mb-2 text-muted">Popular Routes</li>
+                        <li class="mb-2 text-muted">Blog</li>
+                    </ul>
+                </div>
+
+                <div class="col-md-2 mb-4">
+                    <h6 class="fw-semibold">services</h6>
+                    <ul class="list-unstyled mt-3">
+                        <li class="mb-2 text-muted">Bus Tickets</li>
+                        <li class="mb-2 text-muted">Launch Tickets</li>
+                    </ul>
+                </div>
+
+                <div class="col-md-2 mb-4">
+                    <h6 class="fw-semibold">legal</h6>
+                    <ul class="list-unstyled mt-3">
+                        <li class="mb-2 text-muted">Terms & Conditions</li>
+                        <li class="mb-2 text-muted">Privacy Notice</li>
+                        <li class="mb-2 text-muted">Cancellation Policy</li>
+                    </ul>
+                </div>
+
+                <!-- Social -->
+                <div class="col-md-2 mb-4">
+                    <h6 class="fw-semibold">follow us</h6>
+                    <div class="d-flex gap-3 mt-3">
+                        <i class="bi bi-facebook fs-5"></i>
+                        <i class="bi bi-instagram fs-5"></i>
+                        <i class="bi bi-youtube fs-5"></i>
+                        <i class="bi bi-tiktok fs-5"></i>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Payment Methods -->
+            <div class="text-center mt-4">
+                <p class="text-muted mb-3">we accept</p>
+
+                <div class="d-flex flex-wrap justify-content-center gap-3">
+                    <img src="Icons/vecteezy_visa-logo-png-visa-icon-transparent-png_20975570.png" height="35">
+                    <img src="Icons/bkash_logo_0.webp" height="35">
+                    <img src="Icons/dbbl.jpg" height="35">
+                    <img src="Icons/bkash_logo_0.webp" height="35">
+                    <img src="Icons/vecteezy_visa-logo-png-visa-icon-transparent-png_20975570.png" height="35">
+                    <img src="Icons/bkash_logo_0.webp" height="35">
+                    <img src="Icons/vecteezy_visa-logo-png-visa-icon-transparent-png_20975570.png" height="35">
+                    <img src="Icons/bkash_logo_0.webp" height="35">
+                    <img src="Icons/vecteezy_visa-logo-png-visa-icon-transparent-png_20975570.png" height="35">
+                    <img src="Icons/bkash_logo_0.webp" height="35">
+                </div>
+            </div>
+
+            <!-- Bottom Line -->
+            <hr class="text-secondary mt-4">
+
+            <p class="text-center text-muted mb-0" style="font-size: 13px;">
+                © 2026 bdtickets. All rights reserved.
+            </p>
+
+        </div>
+    </div>
+    <!-- Footer Part -->
+
+
+    <!-- JavaScript -->
+    <script src="bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- JavaScript -->
+    <script>
+        function switchTab(tab) {
+            const phoneTab = document.getElementById('phoneTab');
+            const emailTab = document.getElementById('emailTab');
+            const phoneSection = document.getElementById('phoneSection');
+            const emailSection = document.getElementById('emailSection');
+
+            if (tab === 'phone') {
+                phoneTab.className = 'btn btn-white border w-50 d-flex align-items-center justify-content-center gap-2';
+                emailTab.className = 'btn w-50 d-flex align-items-center justify-content-center gap-2 text-muted';
+                phoneSection.style.display = 'block';
+                emailSection.style.display = 'none';
+            } else {
+                emailTab.className = 'btn btn-white border w-50 d-flex align-items-center justify-content-center gap-2';
+                phoneTab.className = 'btn w-50 d-flex align-items-center justify-content-center gap-2 text-muted';
+                emailSection.style.display = 'block';
+                phoneSection.style.display = 'none';
+            }
+        }
+    </script>
+    <!-- JavaScript -->
+</body>
+
+</html>

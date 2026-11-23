@@ -1,0 +1,322 @@
+:root {
+            --red: #e63329;
+            --red-light: #fff0ef;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        /* ===== SIDEBAR ===== */
+        .sidebar {
+            background: #fff;
+            border-radius: 12px;
+            border: 1px solid #eee;
+        }
+
+        .filter-section {
+            border-bottom: 1px solid #f0f0f0;
+            padding: 14px 16px;
+        }
+
+        .filter-section:last-child {
+            border-bottom: none;
+        }
+
+        .section-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--red);
+            margin-bottom: 10px;
+        }
+
+        /* AC Buttons */
+        .ac-btn {
+            border: 1.5px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 8px;
+            text-align: center;
+            cursor: pointer;
+            background: #fff;
+            font-size: 12px;
+            color: #777;
+            transition: all 0.2s;
+        }
+
+        .ac-btn.active,
+        .ac-btn:hover {
+            border-color: var(--red);
+            color: var(--red);
+            background: var(--red-light);
+        }
+
+        /* Bus Type Tags */
+        .bus-tag {
+            border: 1px solid #e0e0e0;
+            border-radius: 20px;
+            padding: 4px 12px;
+            font-size: 11px;
+            cursor: pointer;
+            color: #666;
+            background: #fff;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .bus-tag.active,
+        .bus-tag:hover {
+            border-color: var(--red);
+            color: var(--red);
+            background: var(--red-light);
+        }
+
+        /* Time Buttons */
+        .time-btn {
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 8px 6px;
+            text-align: center;
+            cursor: pointer;
+            background: #fff;
+            transition: all 0.2s;
+        }
+
+        .time-btn:hover {
+            border-color: var(--red);
+            background: var(--red-light);
+        }
+
+        .time-btn .t-label {
+            font-size: 11px;
+            color: #555;
+            display: block;
+        }
+
+        .time-btn .t-range {
+            font-size: 10px;
+            color: #aaa;
+            display: block;
+        }
+
+        /* Company Checkbox */
+        .company-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 6px 0;
+            font-size: 13px;
+            color: #444;
+            border-bottom: 1px solid #f5f5f5;
+        }
+
+        .company-item:last-child {
+            border-bottom: none;
+        }
+
+        /* ===== SORT BAR ===== */
+        .sort-btn {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 6px 12px;
+            font-size: 12px;
+            color: #666;
+            background: #fff;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            transition: all 0.2s;
+        }
+
+        .sort-btn:hover,
+        .sort-btn.active {
+            border-color: var(--red);
+            color: var(--red);
+        }
+
+        .tab-toggle {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+        }
+
+        .tab-toggle .tab-item {
+            padding: 6px 16px;
+            font-size: 12px;
+            cursor: pointer;
+            background: #fff;
+            color: #666;
+            border: none;
+            outline: none;
+            transition: all 0.2s;
+        }
+
+        .tab-toggle .tab-item.active {
+            background: #fff;
+            color: #222;
+            font-weight: 600;
+            border-bottom: 2px solid var(--red);
+        }
+
+        /* ===== AD BANNER ===== */
+        .ad-banner {
+            border-radius: 10px;
+            overflow: hidden;
+            background: linear-gradient(120deg, #c8102e 55%, #900020);
+            height: 110px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 1.5rem;
+            position: relative;
+        }
+
+        .ad-banner .ad-badge {
+            font-size: 10px;
+            font-weight: 700;
+            background: rgba(255,255,255,0.2);
+            color: #fff;
+            padding: 2px 8px;
+            border-radius: 20px;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        .ad-banner .ad-logo {
+            font-size: 26px;
+            font-weight: 900;
+            color: white;
+            opacity: 0.9;
+            letter-spacing: -1px;
+        }
+
+        /* ===== BUS CARD ===== */
+        .bus-card {
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 12px;
+            padding: 16px 20px;
+            transition: box-shadow 0.2s;
+        }
+
+        .bus-card:hover {
+            box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+        }
+
+        .bus-name {
+            font-size: 15px;
+            font-weight: 600;
+            color: #222;
+        }
+
+        .bus-code {
+            font-size: 11px;
+            color: #aaa;
+        }
+
+        .time-big {
+            font-size: 17px;
+            font-weight: 600;
+            color: #222;
+        }
+
+        .city-name {
+            font-size: 11px;
+            color: #999;
+        }
+
+        .route-line {
+            position: relative;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+        }
+
+        .route-line hr {
+            width: 100%;
+            border-color: #ddd;
+            margin: 0;
+        }
+
+        .duration-text {
+            font-size: 11px;
+            color: #bbb;
+        }
+
+        .price-text {
+            font-size: 20px;
+            font-weight: 700;
+            color: #222;
+        }
+
+        .price-old {
+            font-size: 12px;
+            color: #bbb;
+            text-decoration: line-through;
+        }
+
+        .save-badge {
+            background: #fff8e1;
+            color: #c07800;
+            font-size: 10px;
+            padding: 3px 10px;
+            border-radius: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+        }
+
+        .card-footer-bar {
+            border-top: 1px solid #f0f0f0;
+            padding-top: 10px;
+            margin-top: 4px;
+        }
+
+        .boarding-link {
+            font-size: 12px;
+            color: #888;
+            cursor: pointer;
+        }
+
+        .boarding-link:hover {
+            color: var(--red);
+        }
+
+        .class-tag {
+            border: 1px solid #e0e0e0;
+            border-radius: 20px;
+            padding: 3px 10px;
+            font-size: 11px;
+            color: #666;
+        }
+
+        .seats-left {
+            font-size: 12px;
+            color: #888;
+        }
+
+        .seats-num {
+            color: var(--red);
+            font-weight: 600;
+        }
+
+        .btn-view {
+            background: var(--red);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 7px 18px;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-view:hover {
+            background: #c0271f;
+        }

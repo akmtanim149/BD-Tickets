@@ -1,0 +1,842 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Travel</title>
+  </head>
+  <body>
+    <!doctype html>
+    <html lang="bn">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Bus Search Results</title>
+        <link rel="stylesheet" href="bus_route_page.css" />
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+        />
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css"
+        />
+      </head>
+      <body>
+        <!-- Top Part -->
+        <!-- Top Part -->
+        <div style="position: relative">
+          <!-- Background Image -->
+          <img
+            src="Gallery/collected/BDTickets Landing Page 1.png"
+            alt=""
+            style="width: 100%; height: 400px; object-fit: cover"
+          />
+
+          <!-- Dark overlay -->
+          <div
+            style="
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              background: rgba(0, 0, 0, 0.5);
+            "
+          ></div>
+
+          <!-- Search Bar + Date Slider — image এর উপরে -->
+          <div
+            class="py-3"
+            style="
+              position: absolute;
+              bottom: 0;
+              left: 0;
+              width: 100%;
+              background: rgba(255, 255, 255, 0.95);
+            "
+          >
+            <div class="container">
+              <!-- Input Fields -->
+              <div class="d-flex align-items-center gap-2 mb-3">
+                <!-- Depart From -->
+                <div
+                  class="border rounded-3 px-3 py-2 flex-grow-1"
+                  style="background: #f8f9fa; position: relative"
+                >
+                  <small class="text-muted d-block" style="font-size: 11px"
+                    >Depart From</small
+                  >
+                  <input
+                    type="text"
+                    class="border-0 w-100 fw-semibold bg-transparent"
+                    placeholder="Select"
+                    style="outline: none; font-size: 14px"
+                    onfocus="
+                      document.getElementById('departList2').style.display =
+                        'block'
+                    "
+                    onblur="
+                      setTimeout(
+                        () =>
+                          (document.getElementById(
+                            'departList2',
+                          ).style.display = 'none'),
+                        200,
+                      )
+                    "
+                  />
+                  <div
+                    id="departList2"
+                    class="shadow rounded-3 bg-white p-2"
+                    style="
+                      display: none;
+                      position: absolute;
+                      top: 65px;
+                      left: 0;
+                      width: 220px;
+                      z-index: 999;
+                    "
+                  >
+                    <p class="fw-semibold px-2 mb-1" style="font-size: 13px">
+                      Popular Places
+                    </p>
+                    <div class="dropdown-item py-2">
+                      <i class="bi bi-bus-front me-2"></i>Dhaka
+                    </div>
+                    <div class="dropdown-item py-2">
+                      <i class="bi bi-bus-front me-2"></i>Cox's Bazar
+                    </div>
+                    <div class="dropdown-item py-2">
+                      <i class="bi bi-bus-front me-2"></i>Sylhet
+                    </div>
+                    <div class="dropdown-item py-2">
+                      <i class="bi bi-bus-front me-2"></i>Chittagong
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Arrow -->
+                <i class="bi bi-arrow-left-right text-muted"></i>
+
+                <!-- Going To -->
+                <div
+                  class="border rounded-3 px-3 py-2 flex-grow-1"
+                  style="background: #f8f9fa; position: relative"
+                >
+                  <small class="text-muted d-block" style="font-size: 11px"
+                    >Going To</small
+                  >
+                  <input
+                    type="text"
+                    class="border-0 w-100 fw-semibold bg-transparent"
+                    placeholder="Select"
+                    style="outline: none; font-size: 14px"
+                    onfocus="
+                      document.getElementById('goingList2').style.display =
+                        'block'
+                    "
+                    onblur="
+                      setTimeout(
+                        () =>
+                          (document.getElementById('goingList2').style.display =
+                            'none'),
+                        200,
+                      )
+                    "
+                  />
+                  <div
+                    id="goingList2"
+                    class="shadow rounded-3 bg-white p-2"
+                    style="
+                      display: none;
+                      position: absolute;
+                      top: 65px;
+                      left: 0;
+                      width: 220px;
+                      z-index: 999;
+                    "
+                  >
+                    <p class="fw-semibold px-2 mb-1" style="font-size: 13px">
+                      Popular Places
+                    </p>
+                    <div class="dropdown-item py-2">
+                      <i class="bi bi-bus-front me-2"></i>Cox's Bazar
+                    </div>
+                    <div class="dropdown-item py-2">
+                      <i class="bi bi-bus-front me-2"></i>Sylhet
+                    </div>
+                    <div class="dropdown-item py-2">
+                      <i class="bi bi-bus-front me-2"></i>Barisal
+                    </div>
+                    <div class="dropdown-item py-2">
+                      <i class="bi bi-bus-front me-2"></i>Dhaka
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Journey Date -->
+                <div
+                  class="border rounded-3 px-3 py-2 flex-grow-1"
+                  style="background: #f8f9fa"
+                >
+                  <small class="text-muted d-block" style="font-size: 11px">
+                    <i class="bi bi-calendar3 me-1"></i>Journey date
+                  </small>
+                  <input
+                    type="date"
+                    class="border-0 w-100 fw-semibold bg-transparent"
+                    style="outline: none; font-size: 14px"
+                    id="journeyDate"
+                  />
+                </div>
+
+                <!-- Return Date -->
+                <div
+                  class="border rounded-3 px-3 py-2 flex-grow-1"
+                  style="background: #f8f9fa"
+                >
+                  <small class="text-muted d-block" style="font-size: 11px">
+                    <i class="bi bi-calendar3 me-1"></i>Return date
+                  </small>
+                  <p
+                    class="mb-0 text-primary fw-semibold"
+                    style="font-size: 14px"
+                  >
+                    Book to Save Extra
+                  </p>
+                </div>
+
+                <!-- Passengers -->
+                <div
+                  class="border rounded-3 px-3 py-2"
+                  style="background: #f8f9fa"
+                >
+                  <small class="text-muted d-block" style="font-size: 11px"
+                    >Passenger(s)</small
+                  >
+                  <select
+                    class="border-0 fw-semibold bg-transparent"
+                    style="outline: none; font-size: 14px"
+                  >
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                  </select>
+                </div>
+
+                <!-- Search Button -->
+                <button class="btn btn-danger rounded-3 px-3 py-2">
+                  <i class="bi bi-search text-white fs-5"></i>
+                </button>
+              </div>
+
+              <!-- Date Slider -->
+              <div class="d-flex align-items-center gap-2">
+                <button class="btn btn-sm text-muted" onclick="slideDate(-1)">
+                  <i class="bi bi-chevron-double-left fs-5"></i>
+                </button>
+                <div
+                  class="d-flex gap-3 overflow-hidden flex-grow-1 justify-content-center"
+                  id="dateSlider"
+                ></div>
+                <button class="btn btn-sm text-muted" onclick="slideDate(1)">
+                  <i class="bi bi-chevron-double-right fs-5"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Top Part -->
+
+        <!-- Bottom Part -->
+
+        <div class="container py-3">
+          <div class="row g-3">
+            <!-- ===== SIDEBAR ===== -->
+            <div class="col-lg-3 col-md-4">
+              <div class="sidebar">
+                <!-- Header -->
+                <div
+                  class="filter-section d-flex justify-content-between align-items-center"
+                >
+                  <span class="fw-semibold" style="font-size: 15px">
+                    <i class="bi bi-sliders me-1"></i> All Filters
+                  </span>
+                  <span style="font-size: 13px; color: #aaa; cursor: pointer"
+                    >Clear All</span
+                  >
+                </div>
+
+                <!-- AC/Non-AC -->
+                <div class="filter-section">
+                  <div class="section-title d-flex justify-content-between">
+                    AC/Non-AC <i class="bi bi-chevron-up"></i>
+                  </div>
+                  <div class="row g-2">
+                    <div class="col-6">
+                      <div class="ac-btn active">
+                        <i class="bi bi-snow2 d-block fs-5 mb-1"></i>
+                        AC
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="ac-btn">
+                        <i class="bi bi-wind d-block fs-5 mb-1"></i>
+                        NON AC
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Bus Type -->
+                <div class="filter-section">
+                  <div class="section-title d-flex justify-content-between">
+                    Bus Type <i class="bi bi-chevron-up"></i>
+                  </div>
+                  <div class="d-flex flex-wrap gap-2">
+                    <span class="bus-tag">Sleeper</span>
+                    <span class="bus-tag active">B-Class</span>
+                    <span class="bus-tag">E-Class</span>
+                    <span class="bus-tag">Non-AC</span>
+                    <span class="bus-tag">Business</span>
+                    <span class="bus-tag">SP</span>
+                    <span class="bus-tag">AC</span>
+                    <span class="bus-tag">DD-UPPER</span>
+                    <span class="bus-tag">DD-LOWER</span>
+                    <span class="bus-tag">ECONOMY</span>
+                  </div>
+                </div>
+
+                <!-- Time -->
+                <div class="filter-section">
+                  <div class="section-title d-flex justify-content-between">
+                    Time <i class="bi bi-chevron-up"></i>
+                  </div>
+                  <div class="row g-2">
+                    <div class="col-6">
+                      <div class="time-btn">
+                        <i class="bi bi-moon-stars fs-5"></i>
+                        <span class="t-label">Early Morning</span>
+                        <span class="t-range">4AM-8AM</span>
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="time-btn">
+                        <i class="bi bi-sun fs-5"></i>
+                        <span class="t-label">Morning</span>
+                        <span class="t-range">8AM-12PM</span>
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="time-btn">
+                        <i class="bi bi-cloud-sun fs-5"></i>
+                        <span class="t-label">Afternoon</span>
+                        <span class="t-range">12PM-4PM</span>
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="time-btn">
+                        <i class="bi bi-moon fs-5"></i>
+                        <span class="t-label">Night</span>
+                        <span class="t-range">4PM-8PM</span>
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="time-btn">
+                        <i class="bi bi-stars fs-5"></i>
+                        <span class="t-label">Overnight</span>
+                        <span class="t-range">8PM-12AM</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Bus Company -->
+                <div class="filter-section">
+                  <div class="section-title d-flex justify-content-between">
+                    Bus Company <i class="bi bi-chevron-up"></i>
+                  </div>
+                  <input
+                    type="text"
+                    class="form-control form-control-sm mb-2"
+                    placeholder="🔍 Search Bus company"
+                  />
+                  <div>
+                    <div class="company-item">
+                      <span>46 express</span>
+                      <input type="checkbox" class="form-check-input" />
+                    </div>
+                    <div class="company-item">
+                      <span>Ak travels</span>
+                      <input type="checkbox" class="form-check-input" />
+                    </div>
+                    <div class="company-item">
+                      <span>Almizan</span>
+                      <input type="checkbox" class="form-check-input" />
+                    </div>
+                    <div class="company-item">
+                      <span>Green Line</span>
+                      <input type="checkbox" class="form-check-input" />
+                    </div>
+                    <div class="company-item">
+                      <span>Shyamoli</span>
+                      <input type="checkbox" class="form-check-input" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- END SIDEBAR -->
+
+            <!-- ===== MAIN CONTENT ===== -->
+            <div class="col-lg-9 col-md-8">
+              <!-- Top Bar -->
+              <div
+                class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3"
+              >
+                <div>
+                  <div style="font-size: 20px; font-weight: 600; color: #222">
+                    Buses
+                  </div>
+                  <div style="font-size: 13px; color: var(--red)">
+                    181 Buses
+                  </div>
+                </div>
+                <div class="d-flex flex-wrap gap-2 align-items-center">
+                  <button class="sort-btn">
+                    <i class="bi bi-currency-dollar"></i> Price
+                    <i class="bi bi-arrow-down-up" style="opacity: 0.4"></i>
+                  </button>
+                  <button class="sort-btn active">
+                    <i class="bi bi-clock"></i> Time
+                    <i class="bi bi-arrow-down-up" style="opacity: 0.4"></i>
+                  </button>
+                  <button class="sort-btn">
+                    <i class="bi bi-person-seat"></i> Seats
+                    <i class="bi bi-arrow-down-up" style="opacity: 0.4"></i>
+                  </button>
+                  <button class="sort-btn">
+                    <i class="bi bi-tag"></i> Offer
+                    <i class="bi bi-arrow-down-up" style="opacity: 0.4"></i>
+                  </button>
+                  <div class="tab-toggle">
+                    <button class="tab-item active">Time</button>
+                    <button class="tab-item">Bus</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Ad Banner -->
+              <div class="ad-banner mb-3">
+                <span class="ad-badge">AD</span>
+                <div>
+                  <div style="color: rgba(255, 255, 255, 0.8); font-size: 12px">
+                    নেটওয়ার্ক এখন আরও
+                  </div>
+                  <div
+                    style="
+                      color: #fff;
+                      font-size: 24px;
+                      font-weight: 900;
+                      line-height: 1.1;
+                    "
+                  >
+                    STRONG
+                  </div>
+                  <div
+                    style="color: rgba(255, 255, 255, 0.75); font-size: 11px"
+                  >
+                    সাথে Best অফার সবসময়
+                  </div>
+                </div>
+                <div class="ad-logo">airtel</div>
+              </div>
+
+              <!-- ===== BUS CARD 1 ===== -->
+              <div class="bus-card mb-3">
+                <div
+                  class="d-flex justify-content-between align-items-start mb-2"
+                >
+                  <div>
+                    <div class="bus-name">Soudia Coach Service</div>
+                    <div class="bus-code">801-SCS</div>
+                  </div>
+                  <div class="text-end">
+                    <div class="price-text">৳ 1000</div>
+                  </div>
+                </div>
+
+                <div class="d-flex align-items-center gap-3 my-2">
+                  <div class="text-center">
+                    <div class="time-big">06:15 AM</div>
+                    <div class="city-name">Abdullahpur ...</div>
+                  </div>
+                  <div class="route-line">
+                    <i
+                      class="bi bi-bus-front"
+                      style="font-size: 14px; color: #aaa"
+                    ></i>
+                    <hr />
+                    <span class="duration-text">11h 0m</span>
+                  </div>
+                  <div class="text-center">
+                    <div class="time-big">05:15 PM</div>
+                    <div class="city-name">Cox's bazar ...</div>
+                  </div>
+                </div>
+
+                <div
+                  class="card-footer-bar d-flex justify-content-between align-items-center flex-wrap gap-2"
+                >
+                  <span class="boarding-link">
+                    <i class="bi bi-arrow-repeat me-1"></i> Boarding / Dropping
+                    Point
+                  </span>
+                  <div class="d-flex align-items-center gap-2 flex-wrap">
+                    <span class="class-tag">Non AC</span>
+                    <span class="seats-left"
+                      >Seats left: <span class="seats-num">36</span></span
+                    >
+                    <button class="btn-view">View Seats</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- ===== BUS CARD 2 ===== -->
+              <div class="bus-card mb-3">
+                <div
+                  class="d-flex justify-content-between align-items-start mb-2"
+                >
+                  <div>
+                    <div class="bus-name">Iconic Express</div>
+                    <div class="bus-code">
+                      AC-140- ABD-DHK-CTG-COX (SWEET CLASS-43)
+                    </div>
+                  </div>
+                  <div class="text-end">
+                    <span class="save-badge"
+                      ><i class="bi bi-lightning-fill"></i> Save ৳ 360</span
+                    >
+                    <div class="mt-1">
+                      <span class="price-old">৳ 1800</span>
+                      <span class="price-text">৳ 1440</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="d-flex align-items-center gap-3 my-2">
+                  <div class="text-center">
+                    <div class="time-big">06:30 AM</div>
+                    <div class="city-name">Abdullahpur ...</div>
+                  </div>
+                  <div class="route-line">
+                    <i
+                      class="bi bi-bus-front"
+                      style="font-size: 14px; color: #aaa"
+                    ></i>
+                    <hr />
+                    <span class="duration-text">10h 20m</span>
+                  </div>
+                  <div class="text-center">
+                    <div class="time-big">04:50 PM</div>
+                    <div class="city-name">Kolatoli, co...</div>
+                  </div>
+                </div>
+
+                <div
+                  class="card-footer-bar d-flex justify-content-between align-items-center flex-wrap gap-2"
+                >
+                  <span class="boarding-link">
+                    <i class="bi bi-arrow-repeat me-1"></i> Boarding / Dropping
+                    Point
+                  </span>
+                  <div class="d-flex align-items-center gap-2 flex-wrap">
+                    <span class="class-tag"
+                      ><i class="bi bi-snow2"></i> AC</span
+                    >
+                    <span class="class-tag"
+                      ><i class="bi bi-briefcase"></i> B-Class</span
+                    >
+                    <span class="class-tag">+1</span>
+                    <span class="seats-left"
+                      >Seats left: <span class="seats-num">43</span></span
+                    >
+                    <button class="btn-view">View Seats</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- ===== BUS CARD 3 ===== -->
+              <div class="bus-card mb-3">
+                <div
+                  class="d-flex justify-content-between align-items-start mb-2"
+                >
+                  <div>
+                    <div class="bus-name">Desh Travels</div>
+                    <div class="bus-code">02 - DHK - COX</div>
+                  </div>
+                  <div class="text-end">
+                    <span class="save-badge"
+                      ><i class="bi bi-lightning-fill"></i> Save ৳ 200</span
+                    >
+                    <div class="mt-1">
+                      <span class="price-old">৳ 2000</span>
+                      <span class="price-text">৳ 1800</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="d-flex align-items-center gap-3 my-2">
+                  <div class="text-center">
+                    <div class="time-big">08:00 AM</div>
+                    <div class="city-name">Kalabagan co...</div>
+                  </div>
+                  <div class="route-line">
+                    <i
+                      class="bi bi-bus-front"
+                      style="font-size: 14px; color: #aaa"
+                    ></i>
+                    <hr />
+                    <span class="duration-text">10h 15m</span>
+                  </div>
+                  <div class="text-center">
+                    <div class="time-big">06:15 PM</div>
+                    <div class="city-name">Jhawtala cou...</div>
+                  </div>
+                </div>
+
+                <div
+                  class="card-footer-bar d-flex justify-content-between align-items-center flex-wrap gap-2"
+                >
+                  <span class="boarding-link">
+                    <i class="bi bi-arrow-repeat me-1"></i> Boarding / Dropping
+                    Point
+                  </span>
+                  <div class="d-flex align-items-center gap-2 flex-wrap">
+                    <span class="class-tag"
+                      ><i class="bi bi-snow2"></i> AC</span
+                    >
+                    <span class="class-tag"
+                      ><i class="bi bi-briefcase"></i> B-Class</span
+                    >
+                    <span class="seats-left"
+                      >Seats left: <span class="seats-num">28</span></span
+                    >
+                    <button class="btn-view">View Seats</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- END MAIN CONTENT -->
+          </div>
+        </div>
+
+        <!-- Footer Part -->
+        <!-- Footer Section -->
+        <div class="container-fluid bg-dark text-white pt-5 pb-3">
+          <div class="container">
+            <div class="row">
+              <!-- Left Side -->
+              <div class="col-md-4 mb-4">
+                <img
+                  src="Gallery/collected/bd-tickets-logo.svg"
+                  alt=""
+                  style="width: 120px"
+                />
+                <p class="mt-3 text-muted" style="font-size: 14px">
+                  Book bus tickets online in Bangladesh with bdtickets. Compare
+                  top bus operators, check schedules, choose seats, and enjoy
+                  secure, reliable travel across all major routes.
+                </p>
+              </div>
+
+              <!-- Middle Links -->
+              <div class="col-md-2 mb-4">
+                <h6 class="fw-semibold">bdtickets</h6>
+                <ul class="list-unstyled mt-3">
+                  <li class="mb-2 text-muted">Help Center</li>
+                  <li class="mb-2 text-muted">About Us</li>
+                  <li class="mb-2 text-muted">Popular Routes</li>
+                  <li class="mb-2 text-muted">Blog</li>
+                </ul>
+              </div>
+
+              <div class="col-md-2 mb-4">
+                <h6 class="fw-semibold">services</h6>
+                <ul class="list-unstyled mt-3">
+                  <li class="mb-2 text-muted">Bus Tickets</li>
+                  <li class="mb-2 text-muted">Launch Tickets</li>
+                </ul>
+              </div>
+
+              <div class="col-md-2 mb-4">
+                <h6 class="fw-semibold">legal</h6>
+                <ul class="list-unstyled mt-3">
+                  <li class="mb-2 text-muted">Terms & Conditions</li>
+                  <li class="mb-2 text-muted">Privacy Notice</li>
+                  <li class="mb-2 text-muted">Cancellation Policy</li>
+                </ul>
+              </div>
+
+              <!-- Social -->
+              <div class="col-md-2 mb-4">
+                <h6 class="fw-semibold">follow us</h6>
+                <div class="d-flex gap-3 mt-3">
+                  <i class="bi bi-facebook fs-5"></i>
+                  <i class="bi bi-instagram fs-5"></i>
+                  <i class="bi bi-youtube fs-5"></i>
+                  <i class="bi bi-tiktok fs-5"></i>
+                </div>
+              </div>
+            </div>
+
+            <!-- Payment Methods -->
+            <div class="text-center mt-4">
+              <p class="text-muted mb-3">we accept</p>
+
+              <div class="d-flex flex-wrap justify-content-center gap-3">
+                <img
+                  src="Icons/vecteezy_visa-logo-png-visa-icon-transparent-png_20975570.png"
+                  height="35"
+                />
+                <img src="Icons/bkash_logo_0.webp" height="35" />
+                <img src="Icons/dbbl.jpg" height="35" />
+                <img src="Icons/bkash_logo_0.webp" height="35" />
+                <img
+                  src="Icons/vecteezy_visa-logo-png-visa-icon-transparent-png_20975570.png"
+                  height="35"
+                />
+                <img src="Icons/bkash_logo_0.webp" height="35" />
+                <img
+                  src="Icons/vecteezy_visa-logo-png-visa-icon-transparent-png_20975570.png"
+                  height="35"
+                />
+                <img src="Icons/bkash_logo_0.webp" height="35" />
+                <img
+                  src="Icons/vecteezy_visa-logo-png-visa-icon-transparent-png_20975570.png"
+                  height="35"
+                />
+                <img src="Icons/bkash_logo_0.webp" height="35" />
+              </div>
+            </div>
+
+            <!-- Bottom Line -->
+            <hr class="text-secondary mt-4" />
+
+            <p class="text-center text-muted mb-0" style="font-size: 13px">
+              © 2026 bdtickets. All rights reserved.
+            </p>
+          </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script>
+          // AC/Non-AC toggle
+          document.querySelectorAll(".ac-btn").forEach((btn) => {
+            btn.addEventListener("click", function () {
+              document
+                .querySelectorAll(".ac-btn")
+                .forEach((b) => b.classList.remove("active"));
+              this.classList.add("active");
+            });
+          });
+
+          // Bus Type tag toggle
+          document.querySelectorAll(".bus-tag").forEach((tag) => {
+            tag.addEventListener("click", function () {
+              this.classList.toggle("active");
+            });
+          });
+
+          // Time button toggle
+          document.querySelectorAll(".time-btn").forEach((btn) => {
+            btn.addEventListener("click", function () {
+              this.classList.toggle("active");
+            });
+          });
+
+          // Sort button toggle
+          document.querySelectorAll(".sort-btn").forEach((btn) => {
+            btn.addEventListener("click", function () {
+              document
+                .querySelectorAll(".sort-btn")
+                .forEach((b) => b.classList.remove("active"));
+              this.classList.add("active");
+            });
+          });
+
+          // Tab toggle
+          document.querySelectorAll(".tab-item").forEach((tab) => {
+            tab.addEventListener("click", function () {
+              document
+                .querySelectorAll(".tab-item")
+                .forEach((t) => t.classList.remove("active"));
+              this.classList.add("active");
+            });
+          });
+        </script>
+
+        <!-- JavaScript -->
+        <!-- Date Slider JavaScript -->
+        <script>
+          const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+          let startDate = new Date();
+          startDate.setDate(startDate.getDate() - 2);
+
+          function renderDates() {
+            const slider = document.getElementById("dateSlider");
+            slider.innerHTML = "";
+            const today = new Date();
+
+            for (let i = 0; i < 17; i++) {
+              const d = new Date(startDate);
+              d.setDate(startDate.getDate() + i);
+
+              const isToday = d.toDateString() === today.toDateString();
+              const dayName = days[d.getDay()];
+              const dayNum = d.getDate().toString().padStart(2, "0");
+
+              const btn = document.createElement("button");
+              btn.className = `btn px-3 py-1 rounded-3 text-center flex-shrink-0`;
+              btn.style.minWidth = "50px";
+              btn.innerHTML = `<div style="font-size: 12px;">${dayNum}</div><div style="font-size: 11px;">${dayName}</div>`;
+
+              if (isToday) {
+                btn.classList.add("btn-danger", "text-white");
+              } else {
+                btn.classList.add("text-muted");
+              }
+
+              btn.onclick = function () {
+                document.querySelectorAll("#dateSlider button").forEach((b) => {
+                  b.className =
+                    "btn px-3 py-1 rounded-3 text-center flex-shrink-0 text-muted";
+                });
+                btn.className =
+                  "btn px-3 py-1 rounded-3 text-center flex-shrink-0 btn-danger text-white";
+
+                const yyyy = d.getFullYear();
+                const mm = String(d.getMonth() + 1).padStart(2, "0");
+                const dd = String(d.getDate()).padStart(2, "0");
+                document.getElementById("journeyDate").value =
+                  `${yyyy}-${mm}-${dd}`;
+              };
+
+              slider.appendChild(btn);
+            }
+          }
+
+          function slideDate(dir) {
+            startDate.setDate(startDate.getDate() + dir * 5);
+            renderDates();
+          }
+
+          renderDates();
+        </script>
+        <!-- JavaScript -->
+      </body>
+    </html>
+  </body>
+</html>
